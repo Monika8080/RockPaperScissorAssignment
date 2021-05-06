@@ -1,0 +1,33 @@
+plugins {
+	id 'org.springframework.boot' version '2.2.3.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+	id 'java'
+}
+
+group = 'com.example'
+version = '1'
+sourceCompatibility = '1.8'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	testImplementation(
+			'junit:junit:4.12',
+			'org.junit.jupiter:junit-jupiter-api:5.4.2'
+	)
+	testRuntime(
+			'org.junit.jupiter:junit-jupiter-engine:5.4.2',
+			'org.junit.vintage:junit-vintage-engine:5.4.2'
+	)
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	testCompile 'com.jayway.jsonpath:json-path'
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+}
+
+test {
+	useJUnitPlatform()
+}
